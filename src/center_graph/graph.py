@@ -50,23 +50,18 @@ tools = [ToEnvironmentMonitorAssistant, ToDiseaseAndPestAssistant]
 # 路由规则
 tools_by_name = {tool.__name__: tool for tool in tools}
 def route(state: CenterState):
-    '''if messages := state.get("messages", []):
+    if messages := state.get("messages", []):
         message = messages[-1]
     else:
         raise ValueError("No message found in input")
     outputs = []
     for tool_call in message.tool_calls:
         assistant_node = tools_by_name[tool_call["name"]].model_fields["assistant"].default
-        outputs.append(assistant_node)'''
+        outputs.append(assistant_node)
 
-    outputs = ["disease_pest_assistant", "monitor_environment_assistant"]
+    #outputs = ["disease_pest_assistant", "monitor_environment_assistant"]
     return outputs
 
-
-def temp_end(state: CenterState):
-    """用于观察end之前的state状态"""
-    print("=========================================即将到达end节点===========================================")
-    return
 
 disease_pest_graph = disease_pest_builder.compile()
 environment_monitor_graph = environment_monitor_builder.compile()
@@ -127,7 +122,3 @@ center_builder.add_conditional_edges("primary_assistant", route, ["disease_pest_
 center_builder.add_edge("disease_pest_assistant", "primary_assistant")
 center_builder.add_edge("monitor_environment_assistant", "primary_assistant")
 
-'''center_builder.add_node(temp_end)
-center_builder.add_edge("temp_end", END)
-center_builder.add_edge("disease_pest_assistant", "temp_end")
-center_builder.add_edge("monitor_environment_assistant", "temp_end")'''

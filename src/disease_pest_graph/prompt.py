@@ -14,7 +14,7 @@ disease_pest_prompt = ChatPromptTemplate.from_messages(
             "请记住，只有通过成功调用工具获得的环境数据才是有效的。不要猜测或编造不存在的数据。"
             "\n当前时间: {time}。"
             "\n\n如果用户需要帮助，并且您的工具都不适用，则"
-            '请调用“CompleteOrEscalate”将任务返回主助理。不要浪费用户时间，也不要虚构工具或功能。',
+            '不要浪费用户时间，也不要虚构工具或功能。',
         ),
         ("placeholder", "{messages}"),
     ]

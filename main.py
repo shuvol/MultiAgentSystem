@@ -32,9 +32,9 @@ def _print_event(event: dict, _printed: set, max_length=1500):
             _printed.add(message.id)  # 将消息ID添加到已打印集合中
 
 async def main():
-    os.environ["LANGSMITH_TRACING"] = "true"
-    os.environ["LANGCHAIN_API_KEY"] = "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"
-    os.environ["LANGCHAIN_PROJECT"] = "multiAgentSystem"
+    #os.environ["LANGSMITH_TRACING"] = "true"
+    #os.environ["LANGCHAIN_API_KEY"] = ""
+    #os.environ["LANGCHAIN_PROJECT"] = "multiAgentSystem"
 
     # 生成随机的唯一会话id
     session_id = str(uuid.uuid4())
